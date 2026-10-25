@@ -721,7 +721,7 @@ dialog p {
 
 @media(min-width:600px) {
     body {
-        background: #e6dfd5;
+        background: #535353;
         display: grid;
         place-items: center;
         height: 100vh;
