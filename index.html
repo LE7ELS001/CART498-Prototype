@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="light">
-    <title>Corner Set — Design Review 2 Usability Test</title>
+    <title>Corner Set — Design Review 2 · Random Pick</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -20,36 +20,48 @@
                 <p class="scenario">You are walking around the city and feel like watching a live street performance.
                     You don't have a particular performer in mind, so you open Corner Set to explore nearby
                     performances.</p>
-                <p class="disclaimer"></p>
+                <p class="disclaimer">This prototype uses fictional performances and approximate locations.</p>
             </div>
             <button class="primary start" id="start-test">Start Test</button>
         </section>
         <div class="discovery" id="discovery" hidden>
             <header class="top">
-                <div class="header"><img class="brand" src="assets/Image/logo.svg" width="204" height="28.1637"
-                        alt="Corner Set"><button class="restart" id="restart-test">Restart
-                        Test</button></div>
-                <h1 class="title" id="discovery-title" tabindex="-1">LIVE NEAR YOU</h1>
+                <div class="header">
+                    <img class="brand" src="assets/Image/logo.svg" width="204" height="28.1637" alt="Corner Set">
+                    <button class="restart" id="restart-test">Restart Test</button>
+                </div>
+                <div class="title-row">
+                    <h1 class="title" id="discovery-title" tabindex="-1">LIVE NEAR YOU</h1>
+                </div>
                 <fieldset class="filters">
-                    <div class="radii" id="filters"><button class="radius" data-radius="0.25" aria-pressed="false">250
-                            m</button><button class="radius" data-radius="0.5" aria-pressed="false">500
-                            m</button><button class="radius" data-radius="1" aria-pressed="true">1 km</button><button
-                            class="radius" data-radius="1.5" aria-pressed="false">1.5 km</button></div>
+                    <legend class="sr-only">Search radius</legend>
+                    <div class="radii" id="filters">
+                        <button class="radius" data-radius="0.25" aria-pressed="false">250 m</button>
+                        <button class="radius" data-radius="0.5" aria-pressed="false">500 m</button>
+                        <button class="radius" data-radius="1" aria-pressed="true">1 km</button>
+                        <button class="radius" data-radius="1.5" aria-pressed="false">1.5 km</button>
+                    </div>
                 </fieldset>
             </header>
             <div class="workspace" id="workspace">
                 <section id="map-view" class="map-view"
                     aria-label="Map discovery. Static reference map with fictional approximate performance areas; no GPS.">
-                    <div class="world" id="world"><img class="map-image" id="map-image" src="assets/Image/map.png"
-                            width="753" height="713" alt="" draggable="false"><img class="radius-ring" id="ring"
-                            src="assets/Image/radius-1km.png" width="225.333" height="225.333" alt="">
+                    <div class="world" id="world">
+                        <img class="map-image" id="map-image" src="assets/Image/map.png" width="753" height="713" alt=""
+                            draggable="false">
+                        <img class="radius-ring" id="ring" src="assets/Image/radius-1km.png" width="225.333"
+                            height="225.333" alt="">
                         <div id="markers"></div>
                     </div>
+                    <button class="random-pick" id="random-pick">
+                        <span>Random Pick</span>
+                    </button>
                     <div class="map-empty" id="map-empty" hidden></div>
                     <section class="sheet" id="sheet" aria-labelledby="preview-name" hidden>
-                        <div class="sheet-top"><span class="live">LIVE</span>
-                            <p class="time" id="preview-time"></p><button class="dismiss" id="dismiss"
-                                aria-label="Close performer preview">Close ×</button>
+                        <div class="sheet-top">
+                            <span class="live">LIVE</span>
+                            <p class="time" id="preview-time"></p>
+                            <button class="dismiss" id="dismiss" aria-label="Close performer preview">Close ×</button>
                         </div>
                         <div class="sheet-body" id="sheet-body">
                             <h2 id="preview-name" tabindex="-1"></h2>
@@ -66,18 +78,27 @@
                 </section>
             </div>
             <footer class="bottom">
-                <nav class="modes" aria-label="Discovery mode"><button class="mode" id="mode-map" aria-pressed="true"
-                        aria-controls="map-view"><img src="assets/Image/map-icon.svg" width="16" height="16"
-                            alt="">Map</button><button class="mode" id="mode-list" aria-pressed="false"
-                        aria-controls="list-view"><img src="assets/Image/list-icon.svg" width="16" height="16"
-                            alt="">List</button></nav>
+                <nav class="modes" aria-label="Discovery mode">
+                    <button class="mode" id="mode-map" aria-pressed="true" aria-controls="map-view">
+                        <img src="assets/Image/map-icon.svg" width="16" height="16" alt="">Map
+                    </button>
+                    <button class="mode" id="mode-list" aria-pressed="false" aria-controls="list-view">
+                        <img src="assets/Image/list-icon.svg" width="16" height="16" alt="">List
+                    </button>
+                </nav>
             </footer>
         </div>
         <p class="sr-only" id="status" role="status"></p>
     </main>
     <dialog id="route-dialog" aria-labelledby="route-title">
         <h2 id="route-title">Directions</h2>
-        <p>Directions will be available in a future version.</p><button class="dialog-close" data-close>Close</button>
+        <p>Directions will be available in a future version.</p>
+        <button class="dialog-close" data-close>Close</button>
+    </dialog>
+    <dialog id="random-empty" aria-labelledby="random-empty-title">
+        <h2 id="random-empty-title">No performances nearby</h2>
+        <p>No performances are available within this radius. Try a wider radius.</p>
+        <button class="dialog-close" data-close>Close</button>
     </dialog>
     <script src="js/script.js" defer></script>
 </body>

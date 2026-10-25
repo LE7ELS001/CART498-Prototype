@@ -2,21 +2,21 @@
     font-family: Anton;
     src: url('../assets/Font/anton.ttf') format('truetype');
     font-weight: 400;
-    font-display: swap;
+    font-display: swap
 }
 
 @font-face {
     font-family: Arimo;
     src: url('../assets/Font/arimo-regular.ttf') format('truetype');
     font-weight: 400;
-    font-display: swap;
+    font-display: swap
 }
 
 @font-face {
     font-family: Arimo;
     src: url('../assets/Font/arimo-bold.ttf') format('truetype');
     font-weight: 700;
-    font-display: swap;
+    font-display: swap
 }
 
 :root {
@@ -81,7 +81,7 @@ p {
     white-space: nowrap
 }
 
-/* At 402 × 874: header 232px, map 537px, bottom control 56px at y785. */
+/* Main layout */
 .shell {
     --side: 20px;
     --top-space: max(55px, env(safe-area-inset-top, 0px));
@@ -110,7 +110,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px
+    gap: 8px
 }
 
 .brand {
@@ -129,10 +129,6 @@ p {
     background: transparent;
     border-color: transparent;
     white-space: nowrap
-}
-
-.header {
-    gap: 8px
 }
 
 .title {
@@ -171,6 +167,7 @@ p {
     border: 2px solid var(--ink)
 }
 
+/* Map and markers */
 .workspace {
     position: relative;
     min-width: 0;
@@ -236,6 +233,7 @@ p {
     outline-offset: 3px
 }
 
+/* Performer preview */
 .sheet {
     position: absolute;
     left: -1px;
@@ -263,16 +261,15 @@ p {
 }
 
 .live {
+    min-width: 92px;
+    text-align: center;
     background: var(--lime);
     border-radius: 12px;
     padding: 5px 10px;
     white-space: nowrap;
     font-size: 11px;
     font-weight: 700;
-    line-height: 16px;
-
-    min-width: 92px;
-    text-align: center;
+    line-height: 16px
 }
 
 .time {
@@ -341,6 +338,7 @@ p {
     height: 53px
 }
 
+/* List */
 .list-view {
     height: 100%;
     overflow-y: auto;
@@ -432,6 +430,7 @@ p {
     height: 48px
 }
 
+/* Navigation */
 .bottom {
     padding-top: 16px;
     padding-bottom: max(33px, env(safe-area-inset-bottom, 0px));
@@ -481,6 +480,7 @@ p {
     outline-offset: -3px
 }
 
+/* Empty states and dialogs */
 .empty {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -551,82 +551,7 @@ dialog p {
     padding: 12px
 }
 
-/* Compact spacing, never smaller touch targets. Inner list/sheet scroll independently. */
-@media(max-height:760px) {
-    .shell {
-        --top-space: max(32px, env(safe-area-inset-top, 0px))
-    }
-
-    .title {
-        margin-top: 18px
-    }
-
-    .bottom {
-        padding-top: 12px;
-        padding-bottom: max(24px, env(safe-area-inset-bottom, 0px))
-    }
-}
-
-@media(max-width:350px) {
-    .shell {
-        --side: 16px
-    }
-
-    .radius {
-        font-size: 13px
-    }
-
-    .sheet {
-        padding-left: 13px;
-        padding-right: 13px
-    }
-
-    .sheet-top {
-        gap: 6px
-    }
-
-    .live {
-        padding-left: 7px;
-        padding-right: 7px;
-        font-size: 10px
-    }
-
-    .dismiss {
-        min-width: 58px;
-        font-size: 13px
-    }
-
-    .card-pick {
-        padding: 13px 12px;
-        gap: 10px
-    }
-
-    .card-route {
-        margin-left: 12px;
-        margin-right: 12px;
-        width: calc(100% - 24px)
-    }
-}
-
-/* No simulated bezel on phones. Desktop retains a 402 × 874 app where space allows. */
-@media(min-width:600px) {
-    body {
-        background: #e6dfd5;
-        display: grid;
-        place-items: center;
-        height: 100vh;
-        height: 100dvh;
-        padding: 24px
-    }
-
-    .shell {
-        max-width: 402px;
-        height: min(874px, calc(100dvh - 48px));
-        border-radius: 28px;
-        outline: 1px solid #816d8f66
-    }
-}
-
+/* Launch screen */
 .discovery {
     display: contents
 }
@@ -689,4 +614,125 @@ dialog p {
     min-height: 53px;
     border-radius: 18px;
     flex-shrink: 0
+}
+
+/* Random Pick */
+.title-row {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    margin: 35px 0 3px 1px
+}
+
+.title-row .title {
+    margin: 0;
+    white-space: nowrap
+}
+
+.random-pick {
+    position: absolute;
+    z-index: 4;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 20px;
+    min-width: 110px;
+    padding: 9px 5px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--panel);
+    color: var(--purple);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 2px 7px #29163e1a
+}
+
+
+
+.random-pick:active {
+    background: #f1eadb
+}
+
+/* Responsive */
+@media(max-height:760px) {
+    .shell {
+        --top-space: max(32px, env(safe-area-inset-top, 0px))
+    }
+
+    .title {
+        margin-top: 18px
+    }
+
+    .title-row {
+        margin-top: 18px
+    }
+
+    .bottom {
+        padding-top: 12px;
+        padding-bottom: max(24px, env(safe-area-inset-bottom, 0px))
+    }
+}
+
+@media(max-width:350px) {
+    .shell {
+        --side: 16px
+    }
+
+    .radius {
+        font-size: 13px
+    }
+
+    .sheet {
+        padding-left: 13px;
+        padding-right: 13px
+    }
+
+    .sheet-top {
+        gap: 6px
+    }
+
+    .live {
+        padding-left: 7px;
+        padding-right: 7px;
+        font-size: 10px
+    }
+
+    .dismiss {
+        min-width: 58px;
+        font-size: 13px
+    }
+
+    .card-pick {
+        padding: 13px 12px;
+        gap: 10px
+    }
+
+    .card-route {
+        margin-left: 12px;
+        margin-right: 12px;
+        width: calc(100% - 24px)
+    }
+}
+
+@media(min-width:600px) {
+    body {
+        background: #e6dfd5;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        height: 100dvh;
+        padding: 24px
+    }
+
+    .shell {
+        max-width: 402px;
+        height: min(874px, calc(100dvh - 48px));
+        border-radius: 28px;
+        outline: 1px solid #816d8f66
+    }
 }
