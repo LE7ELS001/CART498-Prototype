@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <title>Corner Set — Design Review 2 Usability Test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="shell is-launch">
+        <section class="launch" id="launch" aria-labelledby="launch-title">
+            <img class="brand" src="assets/Image/logo.svg" width="204" height="28.1637" alt="Corner Set">
+            <div class="launch-content">
+                <p class="launch-label">Design Review 2</p>
+                <h1 id="launch-title" tabindex="-1">Explore nearby<br>live performances</h1>
+                <p class="role">Role: Audience member</p>
+                <p class="scenario">You are walking around the city and feel like watching a live street performance.
+                    You don't have a particular performer in mind, so you open Corner Set to explore nearby
+                    performances.</p>
+                <p class="disclaimer"></p>
+            </div>
+            <button class="primary start" id="start-test">Start Test</button>
+        </section>
+        <div class="discovery" id="discovery" hidden>
+            <header class="top">
+                <div class="header"><img class="brand" src="assets/Image/logo.svg" width="204" height="28.1637"
+                        alt="Corner Set"><button class="restart" id="restart-test">Restart
+                        Test</button></div>
+                <h1 class="title" id="discovery-title" tabindex="-1">LIVE NEAR YOU</h1>
+                <fieldset class="filters">
+                    <div class="radii" id="filters"><button class="radius" data-radius="0.25" aria-pressed="false">250
+                            m</button><button class="radius" data-radius="0.5" aria-pressed="false">500
+                            m</button><button class="radius" data-radius="1" aria-pressed="true">1 km</button><button
+                            class="radius" data-radius="1.5" aria-pressed="false">1.5 km</button></div>
+                </fieldset>
+            </header>
+            <div class="workspace" id="workspace">
+                <section id="map-view" class="map-view"
+                    aria-label="Map discovery. Static reference map with fictional approximate performance areas; no GPS.">
+                    <div class="world" id="world"><img class="map-image" id="map-image" src="assets/Image/map.png"
+                            width="753" height="713" alt="" draggable="false"><img class="radius-ring" id="ring"
+                            src="assets/Image/radius-1km.png" width="225.333" height="225.333" alt="">
+                        <div id="markers"></div>
+                    </div>
+                    <div class="map-empty" id="map-empty" hidden></div>
+                    <section class="sheet" id="sheet" aria-labelledby="preview-name" hidden>
+                        <div class="sheet-top"><span class="live">LIVE</span>
+                            <p class="time" id="preview-time"></p><button class="dismiss" id="dismiss"
+                                aria-label="Close performer preview">Close ×</button>
+                        </div>
+                        <div class="sheet-body" id="sheet-body">
+                            <h2 id="preview-name" tabindex="-1"></h2>
+                            <p class="genre" id="preview-genre"></p>
+                            <p class="summary" id="preview-summary"></p>
+                        </div>
+                        <button class="primary" id="directions-button" aria-haspopup="dialog"
+                            aria-label="Directions">Directions</button>
+                    </section>
+                </section>
+                <section class="list-view" id="list-view" aria-label="List discovery — fictional live performances"
+                    tabindex="-1" hidden>
+                    <div class="cards" id="cards"></div>
+                </section>
+            </div>
+            <footer class="bottom">
+                <nav class="modes" aria-label="Discovery mode"><button class="mode" id="mode-map" aria-pressed="true"
+                        aria-controls="map-view"><img src="assets/Image/map-icon.svg" width="16" height="16"
+                            alt="">Map</button><button class="mode" id="mode-list" aria-pressed="false"
+                        aria-controls="list-view"><img src="assets/Image/list-icon.svg" width="16" height="16"
+                            alt="">List</button></nav>
+            </footer>
+        </div>
+        <p class="sr-only" id="status" role="status"></p>
+    </main>
+    <dialog id="route-dialog" aria-labelledby="route-title">
+        <h2 id="route-title">Directions</h2>
+        <p>Directions will be available in a future version.</p><button class="dialog-close" data-close>Close</button>
+    </dialog>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>
